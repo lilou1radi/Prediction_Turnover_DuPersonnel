@@ -1,4 +1,4 @@
-# Prédire le turnover en entreprise
+# Prédire le turnover du personnel
 
 Le Data Mining est l'acte d'analyser d'énormes index d'informations afin de créer de nouvelles données. 
 
