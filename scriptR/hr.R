@@ -136,3 +136,22 @@ AUC
 
 
 #-----------------------------------Arbre de décision------------------------------------------------
+#Ajuster le modèle
+set.seed(42)
+dt = rpart(vol_leave ~ role + perf + age + sex + area + salary, data = train, method = "class")
+dt
+
+#Tracer l'arbre de décision
+library(rattle)
+par(mar = c(5,4,1,2))
+fancyRpartPlot(dt, sub = NULL, main = "Arbre de déciion de base")
+
+#Analyser la capacité prédictive du modèle en utilisant la matrice de confusion
+pred_dt = predict(dt, test, type = 'class')
+cm_dt = table(actual = test$vol_leave, prediction = pred_dt)
+cm_dt
+
+#Calculer l'accuracy du modèle
+accuracy = sum(diag(cm_dt))/sum(cm_dt)
+accuracy
+
